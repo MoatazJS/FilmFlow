@@ -1,32 +1,41 @@
-import MovieCard from "@/components/MovieCard";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import MovieSection from "@/components/MovieSection";
+import Footer from "@/components/Footer";
 import { Movie } from "@/lib/interfaces/interface";
-async function getPopularMovies(): Promise<Movie[]> {
+
+async function fetchMovies(endpoint: string): Promise<Movie[]> {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_API_KEY}&language=en-US`,
-    { next: { revalidate: 3600 } } // cache for 1 hour
+    `https://api.themoviedb.org/3/movie/${endpoint}?api_key=${process.env.TMDB_API_KEY}&language=en-US`,
+    { next: { revalidate: 3600 } }
   );
 
-  if (!res.ok) throw new Error("Failed to fetch movies");
-
+  if (!res.ok) throw new Error(`Failed to fetch ${endpoint} movies`);
   const data = await res.json();
   return data.results;
 }
 
 export default async function Home() {
-  const movies = await getPopularMovies();
+  const [popular, topRated, upcoming] = await Promise.all([
+    fetchMovies("popular"),
+    fetchMovies("top_rated"),
+    fetchMovies("upcoming"),
+  ]);
+
+  const heroMovie = popular[0];
 
   return (
-    <main className="p-6">
-      <h1 className="text-3xl font-bold mb-6">Popular Movies 🎬</h1>
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-        {movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            title={movie.title}
-            posterPath={movie.poster_path}
-          />
-        ))}
-      </div>
+    <main className="min-h-screen flex flex-col">
+      <Navbar />
+      <Hero
+        backdropPath={heroMovie.backdrop_path}
+        title={heroMovie.title}
+        overview={heroMovie.overview}
+      />
+      <MovieSection title="⭐ Popular" movies={popular} />
+      <MovieSection title="📈 Top Rated" movies={topRated} />
+      <MovieSection title="🎥 Upcoming" movies={upcoming} />
+      <Footer />
     </main>
   );
 }

@@ -1,17 +1,26 @@
 import Image from "next/image";
-import { MovieCardProps } from "@/lib/interfaces/interface";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+interface MovieCardProps {
+  title: string;
+  posterPath: string;
+}
 
 export default function MovieCard({ title, posterPath }: MovieCardProps) {
   return (
-    <div className="p-4 border rounded-lg shadow-md hover:scale-105 transition">
-      <Image
-        src={`https://image.tmdb.org/t/p/w500${posterPath}`}
-        alt={title}
-        width={300}
-        height={450}
-        className="rounded-lg"
-      />
-      <h2 className="mt-2 font-semibold text-center">{title}</h2>
-    </div>
+    <Card className="hover:scale-105 transition shadow-lg">
+      <CardHeader className="p-0">
+        <Image
+          src={`https://image.tmdb.org/t/p/w500${posterPath}`}
+          alt={title}
+          width={300}
+          height={450}
+          className="rounded-t-lg"
+        />
+      </CardHeader>
+      <CardContent className="p-2">
+        <CardTitle className="text-sm text-center">{title}</CardTitle>
+      </CardContent>
+    </Card>
   );
 }
