@@ -25,7 +25,7 @@ export default async function Home() {
   const heroMovie = popular[0];
 
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="min-h-screen flex flex-col bg-gradient-to-b from-black via-zinc-900 to-black text-gray-100">
       <Navbar />
       <Hero
         backdropPath={heroMovie.backdrop_path}

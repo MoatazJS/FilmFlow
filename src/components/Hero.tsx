@@ -20,7 +20,9 @@ export default function Hero({ backdropPath, title, overview }: HeroProps) {
       <div className="absolute inset-0 flex flex-col justify-center px-6 max-w-3xl text-white">
         <h1 className="text-4xl font-bold mb-4">{title}</h1>
         <p className="mb-6 line-clamp-3">{overview}</p>
-        <Button variant="destructive">Watch Now</Button>
+        <Button className="bg-yellow-500 hover:bg-yellow-600 cursor-pointer w-fit text-white font-semibold px-6 py-3 rounded-lg shadow-lg shadow-red-900/50 transition-transform duration-300 hover:scale-105">
+          Watch Now
+        </Button>
       </div>
     </section>
   );
