@@ -13,6 +13,7 @@ export default function MovieSection({ title, movies }: MovieSectionProps) {
             key={movie.id}
             title={movie.title}
             posterPath={movie.poster_path}
+            id={movie.id + ""}
           />
         ))}
       </div>

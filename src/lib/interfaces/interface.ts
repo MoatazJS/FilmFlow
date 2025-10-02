@@ -1,6 +1,7 @@
 export interface MovieCardProps {
   title: string;
   posterPath: string;
+  id: string;
 }
 export interface Movie {
   id: number;
