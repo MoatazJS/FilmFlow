@@ -1,7 +1,5 @@
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import MovieSection from "@/components/MovieSection";
-import Footer from "@/components/Footer";
 import { Movie } from "@/lib/interfaces/interface";
 
 async function fetchMovies(endpoint: string): Promise<Movie[]> {
@@ -26,16 +24,14 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen flex flex-col bg-gradient-to-b from-black via-zinc-900 to-black text-gray-100">
-      <Navbar />
       <Hero
         backdropPath={heroMovie.backdrop_path}
         title={heroMovie.title}
         overview={heroMovie.overview}
       />
-      <MovieSection title="⭐ Popular" movies={popular} />
-      <MovieSection title="📈 Top Rated" movies={topRated} />
-      <MovieSection title="🎥 Upcoming" movies={upcoming} />
-      <Footer />
+      <MovieSection title="Popular ->" movies={popular} />
+      <MovieSection title="Top Rated ->" movies={topRated} />
+      <MovieSection title="Upcoming ->" movies={upcoming} />
     </main>
   );
 }
