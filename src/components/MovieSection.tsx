@@ -1,10 +1,5 @@
 import MovieCard from "./MovieCard";
-import { Movie } from "@/lib/interfaces/interface";
-
-interface MovieSectionProps {
-  title: string;
-  movies: Movie[];
-}
+import { MovieSectionProps } from "@/lib/interfaces/interface";
 
 export default function MovieSection({ title, movies }: MovieSectionProps) {
   return (

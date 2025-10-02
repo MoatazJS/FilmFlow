@@ -1,10 +1,6 @@
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-interface MovieCardProps {
-  title: string;
-  posterPath: string;
-}
+import { MovieCardProps } from "@/lib/interfaces/interface";
 
 export default function MovieCard({ title, posterPath }: MovieCardProps) {
   return (

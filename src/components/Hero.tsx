@@ -1,11 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-
-interface HeroProps {
-  backdropPath: string;
-  title: string;
-  overview: string;
-}
+import { HeroProps } from "@/lib/interfaces/interface";
 
 export default function Hero({ backdropPath, title, overview }: HeroProps) {
   return (
