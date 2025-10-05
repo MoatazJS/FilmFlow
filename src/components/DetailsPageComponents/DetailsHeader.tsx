@@ -23,7 +23,7 @@ export default function DetailsHeader({
         <div className="absolute inset-0 bg-gradient-to-b from-bg-black/60 to-black" />
 
         {/* Poster as profile picture */}
-        <div className="absolute inset-x-0 min-h-[800px] flex justify-start items-center pl-32">
+        <div className="absolute inset-x-0 min-h-[800px] flex justify-start items-center lg:pl-32">
           <div className="flex flex-col items-center">
             <Image
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -35,6 +35,11 @@ export default function DetailsHeader({
             <h1 className="mt-4 text-3xl font-bold text-yellow-500 text-center">
               {movie.title}
             </h1>
+            <div className="max-w-2xl mt-2">
+              <p className="leading-relaxed text-sm text-white text-center mx-5">
+                {movie.overview}
+              </p>
+            </div>
           </div>
         </div>
       </section>
