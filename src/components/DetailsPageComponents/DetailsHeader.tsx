@@ -9,7 +9,7 @@ export default function DetailsHeader({
 }) {
   return (
     <>
-      <section className="relative w-full h-[400px]">
+      <section className="relative w-full min-h-[800px]">
         {/* Cover / Backdrop */}
         <Image
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
@@ -20,17 +20,17 @@ export default function DetailsHeader({
         />
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg-black/60 to-black" />
 
         {/* Poster as profile picture */}
-        <div className="absolute inset-x-0 bottom-[-120px] flex justify-center">
+        <div className="absolute inset-x-0 min-h-[800px] flex justify-start items-center pl-32">
           <div className="flex flex-col items-center">
             <Image
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title}
-              width={200}
-              height={300}
-              className="rounded-xl shadow-xl border-4 border-zinc-900"
+              width={300}
+              height={400}
+              className="rounded-xl shadow-xl border-4 border-yellow-600"
             />
             <h1 className="mt-4 text-3xl font-bold text-yellow-500 text-center">
               {movie.title}
