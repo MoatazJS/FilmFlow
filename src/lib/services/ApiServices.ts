@@ -1,5 +1,8 @@
 import axios from "axios";
-import { MovieDetailsResponse } from "../interfaces/interface";
+import {
+  MovieDetailsResponse,
+  MovieCreditsResponse,
+} from "../interfaces/interface";
 
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3",
@@ -32,6 +35,18 @@ export const getMovieDetails = async (
   if (!res) {
     throw new Error("Failed to get movie details");
   }
+  return res.data;
+};
+export const getMovieCredits = async (
+  id: string | number
+): Promise<MovieCreditsResponse> => {
+  const res = await api.get(
+    `/movie/${id}/credits?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+  );
+  if (!res) {
+    throw new Error("Failed to get movie credits");
+  }
+  console.log(res.data);
   return res.data;
 };
 

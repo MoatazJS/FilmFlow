@@ -1,6 +1,6 @@
 import DetailsContent from "@/components/DetailsPageComponents/DetailsContent";
 import DetailsHeader from "@/components/DetailsPageComponents/DetailsHeader";
-import { getMovieDetails } from "@/lib/services/ApiServices";
+import { getMovieCredits, getMovieDetails } from "@/lib/services/ApiServices";
 import React from "react";
 
 export default async function MovieDetailsPage({
@@ -10,7 +10,8 @@ export default async function MovieDetailsPage({
 }) {
   const { id } = await params;
   const movie = await getMovieDetails(id);
-  console.log(movie);
+  const credits = await getMovieCredits(id);
+  console.log(credits);
   return (
     <>
       <main className="min-h-screen flex flex-col bg-gradient-to-b from-black via-zinc-900 to-black text-gray-100">
