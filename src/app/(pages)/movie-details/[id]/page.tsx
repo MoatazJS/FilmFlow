@@ -30,9 +30,6 @@ export default async function MovieDetailsPage({
         <DetailsVideos videos={videos} />
         <DetailsCredits credits={credits} />
         <DetailsRecommendation recommendations={recommendations} />
-        <h1 className="mt-48 text-center text-6xl text-yellow-500">
-          HI DETAILS PAGE
-        </h1>
       </main>
     </>
   );
