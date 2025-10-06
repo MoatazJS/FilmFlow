@@ -8,7 +8,7 @@ export default function DetailsContent({
   movie: MovieDetailsResponse;
 }) {
   return (
-    <section className="bg-black text-white py-16 px-8 md:px-16 lg:px-32">
+    <section className="transparent text-white py-16 px-8 md:px-16 lg:px-32">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Genres */}
         <div>

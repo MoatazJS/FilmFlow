@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   MovieDetailsResponse,
   MovieCreditsResponse,
+  MovieVideosResponse,
 } from "../interfaces/interface";
 
 const api = axios.create({
@@ -37,11 +38,26 @@ export const getMovieDetails = async (
   }
   return res.data;
 };
+
+// Get movie credits by ID
 export const getMovieCredits = async (
   id: string | number
 ): Promise<MovieCreditsResponse> => {
   const res = await api.get(
     `/movie/${id}/credits?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+  );
+  if (!res) {
+    throw new Error("Failed to get movie credits");
+  }
+  console.log(res.data);
+  return res.data;
+};
+// Get movie trailers by ID
+export const getMovieVideos = async (
+  id: string | number
+): Promise<MovieVideosResponse> => {
+  const res = await api.get(
+    `/movie/${id}/videos?api_key=${process.env.TMDB_API_KEY}&language=en-US`
   );
   if (!res) {
     throw new Error("Failed to get movie credits");
