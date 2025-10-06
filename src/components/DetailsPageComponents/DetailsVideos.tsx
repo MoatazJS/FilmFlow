@@ -15,10 +15,6 @@ export default function DetailsVideos({
   return (
     <section className="w-full  transparent  rounded-xl">
       <div className="max-w-4xl mx-auto flex flex-col items-center px-4">
-        {/* <h2 className="text-2xl font-semibold text-yellow-400 mb-6 text-center">
-          Official Trailer
-        </h2> */}
-
         <Card className="w-full border-none transparent overflow-hidden">
           <CardContent className="p-0">
             <div className="w-full aspect-video">

@@ -3,6 +3,7 @@ import {
   MovieDetailsResponse,
   MovieCreditsResponse,
   MovieVideosResponse,
+  MovieRecommendationResponse,
 } from "../interfaces/interface";
 
 const api = axios.create({
@@ -61,6 +62,19 @@ export const getMovieVideos = async (
   );
   if (!res) {
     throw new Error("Failed to get movie credits");
+  }
+  console.log(res.data);
+  return res.data;
+};
+// Get movie recommendations by ID
+export const getMovieRecommendations = async (
+  id: string | number
+): Promise<MovieRecommendationResponse> => {
+  const res = await api.get(
+    `/movie/${id}/recommendations?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+  );
+  if (!res) {
+    throw new Error("Failed to get movie recommendations");
   }
   console.log(res.data);
   return res.data;
