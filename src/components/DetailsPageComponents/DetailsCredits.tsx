@@ -27,7 +27,7 @@ export default function DetailsCredits({
   };
 
   return (
-    <section className="relative w-full mt-10 px-6 sm:px-10 lg:px-16">
+    <section className="relative w-full mt-7 px-6 sm:px-10 lg:px-16">
       <h2 className="text-2xl font-semibold text-yellow-400 mb-6 text-center">
         Cast Members
       </h2>
