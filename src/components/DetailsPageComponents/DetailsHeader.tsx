@@ -36,7 +36,7 @@ export default function DetailsHeader({
               {movie.title}
             </h1>
             <div className="max-w-2xl mt-2">
-              <p className="leading-relaxed text-sm text-white text-center mx-5">
+              <p className="leading-relaxed text-white text-center mx-5">
                 {movie.overview}
               </p>
             </div>
