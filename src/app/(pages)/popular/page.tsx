@@ -41,7 +41,7 @@ export default function PopularPage() {
   }, [movies, isPaused]);
   if (isLoading || movies.length === 0) {
     return (
-      <div className="flex justify-center items-center h-screen text-yellow-500 text-3xl">
+      <div className="flex justify-center items-center h-screen bg-black text-yellow-500 text-3xl">
         Loading popular movies...
       </div>
     );

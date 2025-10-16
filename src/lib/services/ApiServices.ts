@@ -15,12 +15,6 @@ const api = axios.create({
   },
 });
 
-// Fetch popular movies
-export const getPopularMovies = async () => {
-  const res = await api.get("/movie/popular");
-  return res.data.results;
-};
-
 // Search movies
 export const searchMovies = async (query: string) => {
   const res = await api.get("/search/movie", {
@@ -28,56 +22,44 @@ export const searchMovies = async (query: string) => {
   });
   return res.data.results;
 };
-// Fetch movie details by ID
+
+// Fetch movie details
 export const getMovieDetails = async (
   id: string | number
 ): Promise<MovieDetailsResponse> => {
-  const res = await api.get(
-    `/movie/${id}?api_key=${process.env.TMDB_API_KEY}&language=en-US`
-  );
-  if (!res) {
-    throw new Error("Failed to get movie details");
-  }
+  const res = await api.get(`/movie/${id}`);
+  if (!res) throw new Error("Failed to get movie details");
   return res.data;
 };
 
-// Get movie credits by ID
+//Get movie credits
 export const getMovieCredits = async (
   id: string | number
 ): Promise<MovieCreditsResponse> => {
-  const res = await api.get(
-    `/movie/${id}/credits?api_key=${process.env.TMDB_API_KEY}&language=en-US`
-  );
-  if (!res) {
-    throw new Error("Failed to get movie credits");
-  }
+  const res = await api.get(`/movie/${id}/credits`);
+  if (!res) throw new Error("Failed to get movie credits");
   return res.data;
 };
-// Get movie trailers by ID
+
+//Get movie trailers
 export const getMovieVideos = async (
   id: string | number
 ): Promise<MovieVideosResponse> => {
-  const res = await api.get(
-    `/movie/${id}/videos?api_key=${process.env.TMDB_API_KEY}&language=en-US`
-  );
-  if (!res) {
-    throw new Error("Failed to get movie credits");
-  }
+  const res = await api.get(`/movie/${id}/videos`);
+  if (!res) throw new Error("Failed to get movie videos");
   return res.data;
 };
-// Get movie recommendations by ID
+
+// Get movie recommendations
 export const getMovieRecommendations = async (
   id: string | number
 ): Promise<MovieRecommendationResponse> => {
-  const res = await api.get(
-    `/movie/${id}/recommendations?api_key=${process.env.TMDB_API_KEY}&language=en-US`
-  );
-  if (!res) {
-    throw new Error("Failed to get movie recommendations");
-  }
+  const res = await api.get(`/movie/${id}/recommendations`);
+  if (!res) throw new Error("Failed to get movie recommendations");
   return res.data;
 };
-// Get all movies using category.
+
+//Get all movies using category
 export const fetchMovies = async (
   endpoint: string,
   page: number = 1
@@ -85,9 +67,8 @@ export const fetchMovies = async (
   const res = await api.get(`/movie/${endpoint}`, {
     params: { page },
   });
-  if (!res) {
-    throw new Error(`Failed to get ${endpoint} data`);
-  }
+  if (!res) throw new Error(`Failed to get ${endpoint} data`);
   return res.data.results;
 };
+
 export default api;

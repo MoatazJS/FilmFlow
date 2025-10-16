@@ -11,21 +11,31 @@ export default function Hero({
 }: HeroProps) {
   return (
     <section
-      className="relative w-full h-[500px] overflow-hidden"
+      className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
+      {/* Background image */}
       <Image
         src={`https://image.tmdb.org/t/p/original${backdropPath}`}
         alt={title}
         fill
-        className="object-cover brightness-75"
         priority
+        className="object-cover object-top md:object-center brightness-90 transition-transform duration-700 ease-out"
       />
-      <div className="absolute inset-0 flex flex-col justify-center px-6 max-w-3xl text-white">
-        <h1 className="text-4xl font-bold mb-4">{title}</h1>
-        <p className="mb-6 line-clamp-3">{overview}</p>
-        <Button className="bg-yellow-500 hover:bg-yellow-600 cursor-pointer w-fit text-white font-semibold px-6 py-3 rounded-lg shadow-lg shadow-red-900/50 transition-transform duration-300 hover:scale-105">
+
+      {/* Subtle dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+
+      {/* Hero text content */}
+      <div className="absolute bottom-12 left-6 md:left-12 z-10 max-w-2xl text-white">
+        <h1 className="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">
+          {title}
+        </h1>
+        <p className="text-gray-300 mb-6 text-sm md:text-base line-clamp-3">
+          {overview}
+        </p>
+        <Button className="bg-yellow-500 hover:bg-yellow-600 cursor-pointer w-fit text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
           See More
         </Button>
       </div>
