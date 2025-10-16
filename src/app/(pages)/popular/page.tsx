@@ -10,6 +10,7 @@ export default function PopularPage() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [heroNumber, setHeroNumber] = useState<number>(0);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
   const heroMovie = movies[heroNumber];
 
   async function popularMovies() {
@@ -22,20 +23,26 @@ export default function PopularPage() {
       setIsLoading(false);
     }
   }
+  // fetch movies on mount
   useEffect(() => {
     popularMovies();
   }, []);
+  // change displayed movie in the hero section
+  useEffect(() => {
+    if (!movies.length || isPaused) {
+      return;
+    }
+  }, []);
 
-  console.log(popularMovies);
   return (
     <>
-      <main className="min-h-screen flex flex-col bg-gradient-to-b from-black via-zinc-900 to-black text-gray-100">
+      <main className="min-h-screen flex flex-col bg-gradient-to-b from-black via-zinc-900 to-black text-gray-100 mt-10">
         <Hero
           backdropPath={heroMovie.backdrop_path}
           title={heroMovie.title}
           overview={heroMovie.overview}
         />
-        <section className="text-center mb-10">
+        <section className="text-center m-10">
           <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-500 tracking-wide mb-4">
             Popular Movies
           </h1>
