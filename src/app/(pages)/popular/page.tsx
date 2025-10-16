@@ -1,5 +1,8 @@
 import React from "react";
+import { fetchMovies } from "@/lib/services/ApiServices";
 
-export default function PopularPage() {
+export default async function PopularPage() {
+  const popularMovies = await fetchMovies("popular");
+  console.log(popularMovies);
   return <div>PopularPage</div>;
 }

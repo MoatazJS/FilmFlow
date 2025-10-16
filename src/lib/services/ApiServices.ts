@@ -86,8 +86,10 @@ export const fetchMovies = async (
     params: { page },
   });
   if (!res) {
+    console.log("TMDB key:", process.env.NEXT_PUBLIC_TMDB_API_KEY);
     throw new Error(`Failed to get ${endpoint} data`);
   }
-  return res.data;
+  console.log("TMDB key:", process.env.NEXT_PUBLIC_TMDB_API_KEY);
+  return res.data.results;
 };
 export default api;
