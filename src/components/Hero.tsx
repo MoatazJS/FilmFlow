@@ -44,7 +44,7 @@ export default function Hero({
         </Link>
         <Link href={`/movie-generator`}>
           <Button className="bg-yellow-500 capitalize m-2 hover:bg-yellow-600 cursor-pointer w-fit text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
-            Check out the movie of the day!
+            Daily Movie
           </Button>
         </Link>
       </div>
