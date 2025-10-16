@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { fetchMovies } from "@/lib/services/ApiServices";
 import { useState } from "react";
 import { Movie } from "@/lib/interfaces/interface";
@@ -11,23 +11,37 @@ export default function PopularPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [heroNumber, setHeroNumber] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [page, setPage] = useState(1);
   const heroMovie = movies[heroNumber];
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
-  async function popularMovies() {
-    try {
-      const res = await fetchMovies("popular");
-      setIsLoading(true);
-      setMovies(res);
-    } catch (error) {
-      console.error("Failed to fetch popular movies:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  }
-  // fetch movies on mount
+  // fetch  movies
   useEffect(() => {
-    popularMovies();
-  }, []);
+    const loadMoreMovies = async () => {
+      setIsLoading(true);
+      const newMovies = await fetchMovies("popular", page);
+      setMovies((prev) => [...prev, ...newMovies]);
+      setIsLoading(false);
+    };
+    loadMoreMovies();
+  }, [page]);
+  // fetch data on reaching end of screen
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isLoading) {
+          setPage((prev) => prev + 1);
+        }
+      },
+      { threshold: 1 }
+    );
+
+    if (loadMoreRef.current) observer.observe(loadMoreRef.current);
+
+    return () => {
+      if (loadMoreRef.current) observer.unobserve(loadMoreRef.current);
+    };
+  }, [isLoading]);
   // change displayed movie in the hero section
   useEffect(() => {
     if (!movies.length || isPaused) {
@@ -66,6 +80,7 @@ export default function PopularPage() {
           </p>
         </section>
         <MovieSection title="" movies={movies} />
+        <div ref={loadMoreRef} className="h-10"></div>
       </main>
     </>
   );
