@@ -4,6 +4,7 @@ import {
   MovieCreditsResponse,
   MovieVideosResponse,
   MovieRecommendationResponse,
+  Movie,
 } from "../interfaces/interface";
 
 const api = axios.create({
@@ -50,7 +51,6 @@ export const getMovieCredits = async (
   if (!res) {
     throw new Error("Failed to get movie credits");
   }
-  console.log(res.data);
   return res.data;
 };
 // Get movie trailers by ID
@@ -63,7 +63,6 @@ export const getMovieVideos = async (
   if (!res) {
     throw new Error("Failed to get movie credits");
   }
-  console.log(res.data);
   return res.data;
 };
 // Get movie recommendations by ID
@@ -76,8 +75,19 @@ export const getMovieRecommendations = async (
   if (!res) {
     throw new Error("Failed to get movie recommendations");
   }
-  console.log(res.data);
   return res.data;
 };
-
+// Get all movies using category.
+export const fetchMovies = async (
+  endpoint: string,
+  page: number = 1
+): Promise<Movie[]> => {
+  const res = await api.get(`/movie/${endpoint}`, {
+    params: { page },
+  });
+  if (!res) {
+    throw new Error(`Failed to get ${endpoint} data`);
+  }
+  return res.data;
+};
 export default api;

@@ -28,7 +28,7 @@ export default function DetailsRecommendations({
   if (!recommendations.results?.length) return null;
 
   return (
-    <section className="w-full mt-10 py-8 bg-zinc-950 rounded-xl">
+    <section className="w-full mt-10 py-8 transparent rounded-xl">
       <div className="max-w-6xl mx-auto px-4 relative">
         {/* Title */}
         <h2 className="text-2xl font-semibold text-yellow-400 mb-6 text-center">

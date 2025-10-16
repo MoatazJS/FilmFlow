@@ -1,17 +1,6 @@
 import Hero from "@/components/Hero";
 import MovieSection from "@/components/MovieSection";
-import { Movie } from "@/lib/interfaces/interface";
-
-async function fetchMovies(endpoint: string): Promise<Movie[]> {
-  const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${endpoint}?api_key=${process.env.TMDB_API_KEY}&language=en-US`,
-    { next: { revalidate: 3600 } }
-  );
-
-  if (!res.ok) throw new Error(`Failed to fetch ${endpoint} movies`);
-  const data = await res.json();
-  return data.results;
-}
+import { fetchMovies } from "@/lib/services/ApiServices";
 
 export default async function Home() {
   const [popular, topRated, upcoming] = await Promise.all([
