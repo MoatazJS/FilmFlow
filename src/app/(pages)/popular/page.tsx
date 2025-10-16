@@ -16,6 +16,7 @@ export default function PopularPage() {
   async function popularMovies() {
     try {
       const res = await fetchMovies("popular");
+      setIsLoading(true);
       setMovies(res);
     } catch (error) {
       console.error("Failed to fetch popular movies:", error);
@@ -32,8 +33,19 @@ export default function PopularPage() {
     if (!movies.length || isPaused) {
       return;
     }
-  }, []);
-
+    const interval = setInterval(() => {
+      setHeroNumber((prev) => (prev + 1) % movies.length);
+    }, 5000);
+    // resets interval on leaving page.
+    return () => clearInterval(interval);
+  }, [movies, isPaused]);
+  if (isLoading || movies.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-screen text-yellow-500 text-3xl">
+        Loading popular movies...
+      </div>
+    );
+  }
   return (
     <>
       <main className="min-h-screen flex flex-col bg-gradient-to-b from-black via-zinc-900 to-black text-gray-100 mt-10">
@@ -41,6 +53,8 @@ export default function PopularPage() {
           backdropPath={heroMovie.backdrop_path}
           title={heroMovie.title}
           overview={heroMovie.overview}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         />
         <section className="text-center m-10">
           <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-500 tracking-wide mb-4">

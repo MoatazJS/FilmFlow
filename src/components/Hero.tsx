@@ -2,9 +2,19 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { HeroProps } from "@/lib/interfaces/interface";
 
-export default function Hero({ backdropPath, title, overview }: HeroProps) {
+export default function Hero({
+  backdropPath,
+  title,
+  overview,
+  onMouseEnter,
+  onMouseLeave,
+}: HeroProps) {
   return (
-    <section className="relative w-full h-[500px] overflow-hidden">
+    <section
+      className="relative w-full h-[500px] overflow-hidden"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <Image
         src={`https://image.tmdb.org/t/p/original${backdropPath}`}
         alt={title}

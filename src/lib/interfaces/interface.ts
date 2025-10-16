@@ -16,6 +16,8 @@ export interface HeroProps {
   backdropPath: string;
   title: string;
   overview: string;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 export interface MovieSectionProps {
   title: string;
