@@ -17,10 +17,11 @@ export default async function Home() {
         backdropPath={heroMovie.backdrop_path}
         title={heroMovie.title}
         overview={heroMovie.overview}
+        id={heroMovie.id}
       />
-      <MovieSection title="Popular ->" movies={popular} />
-      <MovieSection title="Top Rated ->" movies={topRated} />
-      <MovieSection title="Upcoming ->" movies={upcoming} />
+      <MovieSection title="Popular " movies={popular} />
+      <MovieSection title="Top-Rated " movies={topRated} />
+      <MovieSection title="Upcoming " movies={upcoming} />
     </main>
   );
 }

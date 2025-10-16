@@ -75,6 +75,7 @@ export default function PopularPage() {
         backdropPath={heroMovie.backdrop_path}
         title={heroMovie.title}
         overview={heroMovie.overview}
+        id={heroMovie.id}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       />

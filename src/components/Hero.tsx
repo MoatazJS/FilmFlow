@@ -1,11 +1,13 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { HeroProps } from "@/lib/interfaces/interface";
+import Link from "next/link";
 
 export default function Hero({
   backdropPath,
   title,
   overview,
+  id,
   onMouseEnter,
   onMouseLeave,
 }: HeroProps) {
@@ -35,9 +37,11 @@ export default function Hero({
         <p className="text-gray-300 mb-6 text-sm md:text-base line-clamp-3">
           {overview}
         </p>
-        <Button className="bg-yellow-500 hover:bg-yellow-600 cursor-pointer w-fit text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
-          See More
-        </Button>
+        <Link href={`/movie-details/${id}`}>
+          <Button className="bg-yellow-500 hover:bg-yellow-600 cursor-pointer w-fit text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
+            See More
+          </Button>
+        </Link>
       </div>
     </section>
   );

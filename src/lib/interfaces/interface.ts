@@ -16,6 +16,7 @@ export interface HeroProps {
   backdropPath: string;
   title: string;
   overview: string;
+  id: number;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 }
