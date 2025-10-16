@@ -6,8 +6,8 @@ export default function MovieSection({ title, movies }: MovieSectionProps) {
   const linkTitle = title.toLowerCase();
   return (
     <section className="px-6 py-10">
-      <Link href={`/${linkTitle}`}>
-        <h2 className="text-2xl font-bold mb-6 text-yellow-400 drop-shadow-lg w-fit">
+      <Link href={`/${linkTitle}`} className="inline-block">
+        <h2 className="text-2xl font-bold mb-6 text-yellow-400 drop-shadow-lg w-fit cursor-pointer hover:text-yellow-500 hover:underline inline-block">
           {title}
           {"->"}
         </h2>
