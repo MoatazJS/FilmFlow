@@ -31,10 +31,10 @@ export default function Hero({
 
       {/* Hero text content */}
       <div className="absolute bottom-12 left-6 md:left-12 z-10 max-w-2xl text-white">
-        <h1 className="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 lg:mb-5 drop-shadow-lg">
           {title}
         </h1>
-        <p className="text-gray-300 mb-6 text-sm md:text-base line-clamp-3">
+        <p className="text-gray-300 mb-6 text-[13px] sm:text-[14px] md:text-base line-clamp-3 sm:line-clamp-4 md:line-clamp-4 lg:line-clamp-5">
           {overview}
         </p>
         <Link href={`/movie-details/${id}`}>
