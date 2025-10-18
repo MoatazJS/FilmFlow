@@ -7,25 +7,35 @@ export default function RandomMovie() {
     <>
       <section className="min-h-fit max-w-5xl mx-auto mt-10">
         <h2 className="text-center text-yellow-500 font-semibold px-6 text-lg md:text-xl lg:text-2xl">
-          Don&apos;t Know what to watch? pick a genre and let us recommend you a
-          random movie!
+          Don&apos;t Know what to watch? pick your favourite genre and let us
+          recommend you a random movie!
         </h2>
-        <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-start">
+        <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-start mt-3 md:mt-10 mx-6">
           <div>
-            <RadioGroup defaultValue="option-one">
+            <RadioGroup className="text-yellow-500 " defaultValue="28">
+              <h4>Genres:</h4>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="option-one" id="option-one" />
-                <Label htmlFor="option-one">zzzzzzzzz</Label>
+                <RadioGroupItem
+                  className="data-[state=checked]:bg-yellow-700 data-[state=checked]:border-yellow-700"
+                  value="28"
+                  id="Action"
+                />
+                <Label htmlFor="Action">Action</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="option-two" id="option-two" />
-                <Label htmlFor="option-two">Option Two</Label>
+                <RadioGroupItem
+                  className="data-[state=checked]:bg-yellow-700 data-[state=checked]:border-yellow-700"
+                  value="12"
+                  id="Adventure"
+                />
+                <Label htmlFor="Adventure">Adventure</Label>
               </div>
             </RadioGroup>
           </div>
           <div>
             <div>
-              <Image src={"/#"} alt={"#"} fill></Image>
+              <h1>hhhhh</h1>
+              {/* <Image src={"/#"} alt={"#"} fill></Image> */}
             </div>
           </div>
         </div>
