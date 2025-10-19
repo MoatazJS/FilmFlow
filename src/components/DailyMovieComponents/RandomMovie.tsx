@@ -18,6 +18,18 @@ export default function RandomMovie() {
     setIsLoading(true);
     const generatedMovies = await fetchGenreMovies(pickedGenre);
     setGenreMovies(generatedMovies);
+
+    if (generatedMovies.length > 0) {
+      generateRandomMovie(generatedMovies);
+    }
+    setIsLoading(false);
+  }
+
+  async function generateRandomMovie(genreMovies: Movie[]) {
+    setIsLoading(true);
+    const randomized =
+      genreMovies[Math.floor(Math.random() * genreMovies.length)];
+    setRandomMovie(randomized);
     setIsLoading(false);
   }
 
