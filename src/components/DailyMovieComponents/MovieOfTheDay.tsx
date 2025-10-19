@@ -6,7 +6,7 @@ export default function MovieOfTheDay() {
   return (
     <>
       <section className="min-h-fit max-w-5xl mx-auto ">
-        <div className="text-center mt-20 md:mt-10 lg:mt-10 text-4xl md:text-5xl lg:text-6xl text-yellow-500 font-extrabold">
+        <div className="text-center mt-20 md:mt-16 lg:mt-18 text-4xl md:text-5xl lg:text-6xl text-yellow-500 font-extrabold">
           <p>Movie of the day</p>
         </div>
         <div className="container flex flex-col-reverse justify-center md:flex-row lg:flex-row  md:justify-around lg:justify-around items-center mt-20">
@@ -14,7 +14,7 @@ export default function MovieOfTheDay() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl text-yellow-500 hover:text-yellow-600 font-extrabold ml-4 mt-1">
               Movie Title
             </h1>
-            <p className="text-[12px] md:text-[13px] lg:text-sm text-yellow-500 hover:text-yellow-600 font-bold ml-4 mt-1">
+            <p className="text-[12px] md:text-[13px] lg:text-sm text-gray-50 hover:text-yellow-600 font-bold ml-4 mt-1">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum
               deserunt molestias explicabo?
             </p>

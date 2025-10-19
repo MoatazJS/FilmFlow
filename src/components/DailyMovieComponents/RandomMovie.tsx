@@ -26,9 +26,9 @@ export default function RandomMovie() {
   return (
     <>
       <section className="min-h-fit max-w-5xl mx-auto mt-10">
-        <h2 className="text-center text-yellow-500 font-semibold px-6 text-lg md:text-xl lg:text-2xl">
+        <h2 className="text-center text-gray-50 font-semibold px-6 text-lg md:text-xl lg:text-2xl">
           Don&apos;t Know what to watch? pick your favourite genre and let us
-          recommend you a random movie!
+          recommend you a <span className="text-yellow-500">random movie!</span>
         </h2>
         <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-start mt-3 md:mt-10 mx-6">
           <div>
@@ -47,7 +47,9 @@ export default function RandomMovie() {
                       value={genre.id.toString()}
                       id={genre.name}
                     />
-                    <Label htmlFor={genre.name}>{genre.name}</Label>
+                    <Label className="mb-1" htmlFor={genre.name}>
+                      {genre.name}
+                    </Label>
                   </div>
                 ))
               ) : (
