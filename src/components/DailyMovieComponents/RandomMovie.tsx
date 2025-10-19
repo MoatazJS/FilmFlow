@@ -87,12 +87,23 @@ export default function RandomMovie() {
               Generate
             </Button>
           </div>
+
           <div className="mb-10 mx-4 md:mx-0">
-            <h4 className="text-center text-yellow-500">movie title</h4>
-            <div className="w-[250px] h-[300px] md:w-[300px] md:h-[350px] bg-zinc-800 rounded-2xl">
-              <h1>cover</h1>
-              {/* <Image src={"/#"} alt={"#"} fill></Image> */}
-            </div>
+            {Object.keys(randomMovie).length > 0 && (
+              <>
+                <h4 className="text-center text-yellow-500">
+                  {randomMovie.title}
+                </h4>
+                <div className="w-[250px] h-[300px] md:w-[300px] md:h-[400px] bg-zinc-800 rounded-2xl relative overflow-hidden">
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
+                    alt={randomMovie.title}
+                    fill
+                    className="object-fit rounded-2xl"
+                  />
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
