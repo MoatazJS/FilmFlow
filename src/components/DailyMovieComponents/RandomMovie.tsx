@@ -4,13 +4,15 @@ import React, { useEffect, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { fetchGenres } from "@/lib/services/ApiServices";
-
+import { Genre } from "@/lib/interfaces/interface";
+import { Spinner } from "../ui/spinner";
 export default function RandomMovie() {
-  const [genres, setGenres] = useState([]);
+  const [genres, setGenres] = useState<Genre[]>([]);
   const [pickedGenre, setPickedGenre] = useState("");
   async function GetAllGenres() {
     const data = await fetchGenres();
     setGenres(data);
+    console.log("data:", data);
   }
   useEffect(() => {
     GetAllGenres();
@@ -27,14 +29,22 @@ export default function RandomMovie() {
           <div>
             <RadioGroup className="text-yellow-500 " defaultValue="28">
               <h4>Genres:</h4>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  className="data-[state=checked]:bg-yellow-700 data-[state=checked]:border-yellow-700"
-                  value="28"
-                  id="Action"
-                />
-                <Label htmlFor="Action">Action</Label>
-              </div>
+              {genres.length > 0 ? (
+                genres.map((genre) => (
+                  <div key={genre.id} className="flex items-center space-x-2">
+                    <RadioGroupItem
+                      className="data-[state=checked]:bg-yellow-700 data-[state=checked]:border-yellow-700"
+                      value={genre.id.toString()}
+                      id={genre.name}
+                    />
+                    <Label htmlFor={genre.name}>{genre.name}</Label>
+                  </div>
+                ))
+              ) : (
+                <p className="text-yellow-500">
+                  <Spinner />
+                </p>
+              )}
             </RadioGroup>
           </div>
           <div>
