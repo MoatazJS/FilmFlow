@@ -71,4 +71,13 @@ export const fetchMovies = async (
   return res.data.results;
 };
 
+//Get all genres
+export const fetchGenres = async () => {
+  const res = await api.get(`/genre/movie/list?`);
+  if (!res) {
+    throw new Error("Failed to fetch genres");
+  }
+  return res.data.genres;
+};
+
 export default api;

@@ -1,8 +1,21 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { fetchGenres } from "@/lib/services/ApiServices";
+
 export default function RandomMovie() {
+  const [genres, setGenres] = useState([]);
+  const [pickedGenre, setPickedGenre] = useState("");
+  async function GetAllGenres() {
+    const data = await fetchGenres();
+    setGenres(data);
+  }
+  useEffect(() => {
+    GetAllGenres();
+  }, []);
+
   return (
     <>
       <section className="min-h-fit max-w-5xl mx-auto mt-10">
@@ -21,14 +34,6 @@ export default function RandomMovie() {
                   id="Action"
                 />
                 <Label htmlFor="Action">Action</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  className="data-[state=checked]:bg-yellow-700 data-[state=checked]:border-yellow-700"
-                  value="12"
-                  id="Adventure"
-                />
-                <Label htmlFor="Adventure">Adventure</Label>
               </div>
             </RadioGroup>
           </div>
