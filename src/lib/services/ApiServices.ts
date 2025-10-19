@@ -80,4 +80,22 @@ export const fetchGenres = async () => {
   return res.data.genres;
 };
 
+//Get all movies based on genre.
+export const fetchGenreMovies = async (genre: string) => {
+  const pages = 10;
+  const allRequests = [];
+  for (let i = 1; i <= pages; i++) {
+    allRequests.push(
+      api.get(`/discover/movie?with_genres=${genre}`, {
+        params: {
+          page: i,
+        },
+      })
+    );
+  }
+  const responses = await Promise.all(allRequests);
+  if (!responses) throw new Error("Failed to fetch movies for this genre");
+  const allMovies = responses.flatMap((res) => res.data.results);
+  return allMovies;
+};
 export default api;

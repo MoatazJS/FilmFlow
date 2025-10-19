@@ -3,21 +3,30 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { fetchGenres } from "@/lib/services/ApiServices";
-import { Genre } from "@/lib/interfaces/interface";
+import { fetchGenreMovies, fetchGenres } from "@/lib/services/ApiServices";
+import { Genre, Movie } from "@/lib/interfaces/interface";
 import { Spinner } from "../ui/spinner";
 import { Button } from "../ui/button";
 export default function RandomMovie() {
   const [genres, setGenres] = useState<Genre[]>([]);
   const [pickedGenre, setPickedGenre] = useState("");
-  console.log(pickedGenre);
+  const [randomMovie, setRandomMovie] = useState({});
+  const [genreMovies, setGenreMovies] = useState<Movie[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function getGenreMovies(pickedGenre: string) {
+    setIsLoading(true);
+    const generatedMovies = await fetchGenreMovies(pickedGenre);
+    setGenreMovies(generatedMovies);
+    setIsLoading(false);
+  }
+
   async function GetAllGenres() {
     const data = await fetchGenres();
     setGenres(data);
     if (data.length > 0) {
       setPickedGenre(data[0].id.toString());
     }
-    console.log("data:", data);
   }
   useEffect(() => {
     GetAllGenres();
@@ -58,13 +67,18 @@ export default function RandomMovie() {
                 </p>
               )}
             </RadioGroup>
-            <Button className="text-gray-50 bg-yellow-600 py-3 px-7 my-4 hover:bg-yellow-500 hover:text-gray-800 cursor-pointer">
+            <Button
+              disabled={isLoading}
+              onClick={() => getGenreMovies(pickedGenre)}
+              className="text-gray-50 bg-yellow-600 py-3 px-7 my-4 hover:bg-yellow-500 hover:text-gray-800 cursor-pointer"
+            >
               Generate
             </Button>
           </div>
-          <div>
-            <div>
-              <h1>hhhhh</h1>
+          <div className="mb-10 mx-4 md:mx-0">
+            <h4 className="text-center text-yellow-500">movie title</h4>
+            <div className="w-[250px] h-[300px] md:w-[300px] md:h-[350px] bg-zinc-800 rounded-2xl">
+              <h1>cover</h1>
               {/* <Image src={"/#"} alt={"#"} fill></Image> */}
             </div>
           </div>
