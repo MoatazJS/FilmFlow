@@ -6,12 +6,17 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { fetchGenres } from "@/lib/services/ApiServices";
 import { Genre } from "@/lib/interfaces/interface";
 import { Spinner } from "../ui/spinner";
+import { Button } from "../ui/button";
 export default function RandomMovie() {
   const [genres, setGenres] = useState<Genre[]>([]);
   const [pickedGenre, setPickedGenre] = useState("");
+  console.log(pickedGenre);
   async function GetAllGenres() {
     const data = await fetchGenres();
     setGenres(data);
+    if (data.length > 0) {
+      setPickedGenre(data[0].id.toString());
+    }
     console.log("data:", data);
   }
   useEffect(() => {
@@ -27,8 +32,13 @@ export default function RandomMovie() {
         </h2>
         <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-start mt-3 md:mt-10 mx-6">
           <div>
-            <RadioGroup className="text-yellow-500 " defaultValue="28">
-              <h4>Genres:</h4>
+            <h4 className="mb-3 text-yellow-500">Genres:</h4>
+            <RadioGroup
+              className="text-yellow-500 grid grid-cols-2 gap-4"
+              value={pickedGenre}
+              onValueChange={setPickedGenre}
+              defaultValue={pickedGenre}
+            >
               {genres.length > 0 ? (
                 genres.map((genre) => (
                   <div key={genre.id} className="flex items-center space-x-2">
@@ -46,6 +56,9 @@ export default function RandomMovie() {
                 </p>
               )}
             </RadioGroup>
+            <Button className="text-gray-50 bg-yellow-600 py-3 px-7 my-4 hover:bg-yellow-500 hover:text-gray-800 cursor-pointer">
+              Generate
+            </Button>
           </div>
           <div>
             <div>
