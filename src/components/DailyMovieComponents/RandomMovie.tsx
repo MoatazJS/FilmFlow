@@ -65,11 +65,11 @@ export default function RandomMovie() {
                 genres.map((genre) => (
                   <div key={genre.id} className="flex items-center space-x-2">
                     <RadioGroupItem
-                      className="data-[state=checked]:bg-yellow-700 data-[state=checked]:border-yellow-700"
+                      className="data-[state=checked]:bg-yellow-400 data-[state=checked]:border-yellow-400"
                       value={genre.id.toString()}
                       id={genre.name}
                     />
-                    <Label className="mb-1" htmlFor={genre.name}>
+                    <Label className="mb-1 text-gray-50" htmlFor={genre.name}>
                       {genre.name}
                     </Label>
                   </div>
@@ -83,7 +83,7 @@ export default function RandomMovie() {
             <Button
               disabled={isLoading}
               onClick={() => getGenreMovies(pickedGenre)}
-              className="text-gray-50 bg-yellow-500 py-3 px-7 my-4 hover:bg-yellow-600 hover:text-gray-800 cursor-pointer"
+              className="text-gray-50 bg-yellow-400 py-3 px-7 my-4 hover:bg-yellow-500 hover:text-gray-800 cursor-pointer"
             >
               Generate
             </Button>
