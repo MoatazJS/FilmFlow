@@ -94,7 +94,7 @@ export default function RandomMovie() {
                 <h4 className="text-center text-yellow-500">
                   {randomMovie.title}
                 </h4>
-                <div className="w-[250px] h-[300px] md:w-[300px] md:h-[400px] bg-zinc-800 rounded-2xl relative overflow-hidden">
+                <div className="w-[250px] h-[300px] md:w-[300px] md:h-[400px] bg-zinc-800 rounded-2xl relative overflow-hidden flex-shrink-0">
                   <Image
                     src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
                     alt={randomMovie.title}
