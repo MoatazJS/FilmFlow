@@ -16,11 +16,20 @@ const api = axios.create({
 });
 
 // Search movies
-export const searchMovies = async (query: string) => {
-  const res = await api.get("/search/movie", {
-    params: { query },
-  });
-  return res.data.results;
+export const searchMovies = async (query: string): Promise<Movie[]> => {
+  const pages = 10;
+  const allSearches = [];
+  for (let i = 1; i <= pages; i++) {
+    allSearches.push(
+      await api.get("/search/movie", {
+        params: { query, pages: i },
+      })
+    );
+  }
+  const responses = await Promise.all(allSearches);
+  if (!responses) throw new Error("No Movie Found");
+  const result = responses.flatMap((res) => res.data.results);
+  return result;
 };
 
 // Fetch movie details
