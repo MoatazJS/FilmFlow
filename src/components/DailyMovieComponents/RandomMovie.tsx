@@ -7,10 +7,11 @@ import { fetchGenreMovies, fetchGenres } from "@/lib/services/ApiServices";
 import { Genre, Movie } from "@/lib/interfaces/interface";
 import { Spinner } from "../ui/spinner";
 import { Button } from "../ui/button";
+import Link from "next/link";
 export default function RandomMovie() {
   const [genres, setGenres] = useState<Genre[]>([]);
   const [pickedGenre, setPickedGenre] = useState("");
-  const [randomMovie, setRandomMovie] = useState({});
+  const [randomMovie, setRandomMovie] = useState<Movie | null>(null);
   const [genreMovies, setGenreMovies] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -89,20 +90,28 @@ export default function RandomMovie() {
           </div>
 
           <div className="mb-10 mx-4 md:mx-0">
-            {Object.keys(randomMovie).length > 0 && (
-              <>
-                <h4 className="text-center text-yellow-500">
-                  {randomMovie.title}
-                </h4>
-                <div className="w-[250px] h-[300px] md:w-[300px] md:h-[400px] bg-zinc-800 rounded-2xl relative overflow-hidden flex-shrink-0">
-                  <Image
-                    src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
-                    alt={randomMovie.title}
-                    fill
-                    className="object-fit rounded-2xl"
-                  />
-                </div>
-              </>
+            {isLoading ? (
+              <div className=" flex justify-center items-center w-[250px] h-[300px] md:w-[300px] md:h-[400px] bg-zinc-900 rounded-2xl">
+                <Spinner />
+              </div>
+            ) : (
+              randomMovie && (
+                <>
+                  <Link href={`/movie-details/${randomMovie.id}`}>
+                    <h4 className="text-center text-yellow-500">
+                      {randomMovie.title}
+                    </h4>
+                    <div className="w-[250px] h-[300px] md:w-[300px] md:h-[400px] bg-zinc-800 rounded-2xl relative overflow-hidden flex-shrink-0">
+                      <Image
+                        src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
+                        alt={randomMovie.title}
+                        fill
+                        className="object-fit rounded-2xl"
+                      />
+                    </div>
+                  </Link>
+                </>
+              )
             )}
           </div>
         </div>
