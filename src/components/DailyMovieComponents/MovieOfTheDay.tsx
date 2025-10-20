@@ -1,8 +1,9 @@
 import React from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import { MovieOfTheDayProps } from "@/lib/interfaces/interface";
 
-export default function MovieOfTheDay() {
+export default function MovieOfTheDay(movie: MovieOfTheDayProps) {
   return (
     <>
       <section className="min-h-fit max-w-5xl mx-auto ">
