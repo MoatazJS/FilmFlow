@@ -1,6 +1,9 @@
 "use server";
 
+import { Movie } from "../interfaces/interface";
+let cachedMovie: Movie | null = null;
 export async function FetchMovieOfTheDay() {
+  if (cachedMovie) return cachedMovie;
   const Api = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const pages = 10;
   const endpoints = ["popular", "top_rated"];
@@ -23,5 +26,6 @@ export async function FetchMovieOfTheDay() {
   const allMoviesArrays = await Promise.all(responses.map((r) => r.json()));
   const allMovies = allMoviesArrays.flatMap((data) => data.results || []);
   const randomMovie = allMovies[Math.floor(Math.random() * allMovies.length)];
+  cachedMovie = randomMovie;
   return randomMovie;
 }

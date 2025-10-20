@@ -52,7 +52,7 @@ export default function RandomMovie() {
           Don&apos;t Know what to watch? pick your favourite genre and let us
           recommend you a <span className="text-yellow-500">random movie!</span>
         </h2>
-        <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-start mt-3 md:mt-10 mx-6">
+        <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-start mt-3 md:mt-10 mx-6 mb-14">
           <div>
             <h4 className="mb-3 text-yellow-500">Genres:</h4>
             <RadioGroup
@@ -89,7 +89,7 @@ export default function RandomMovie() {
             </Button>
           </div>
 
-          <div className="mb-10 mx-4 md:mx-0">
+          <div className="mx-4 md:mx-0">
             {isLoading ? (
               <div className=" flex justify-center items-center w-[250px] h-[300px] md:w-[300px] md:h-[400px] bg-zinc-900 rounded-2xl">
                 <Spinner />
