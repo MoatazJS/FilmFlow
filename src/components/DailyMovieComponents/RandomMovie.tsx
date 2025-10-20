@@ -50,13 +50,13 @@ export default function RandomMovie() {
       <section className="min-h-fit max-w-5xl mx-auto mt-10">
         <h2 className="text-center text-gray-50 font-semibold px-6 text-lg md:text-xl lg:text-2xl">
           Don&apos;t Know what to watch? pick your favourite genre and let us
-          recommend you a <span className="text-yellow-500">random movie!</span>
+          recommend you a <span className="text-yellow-400">random movie!</span>
         </h2>
         <div className="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-start mt-3 md:mt-10 mx-6 mb-14">
           <div>
             <h4 className="mb-3 text-yellow-500">Genres:</h4>
             <RadioGroup
-              className="text-yellow-500 grid grid-cols-2 gap-4"
+              className="text-yellow-400 grid grid-cols-2 gap-4"
               value={pickedGenre}
               onValueChange={setPickedGenre}
               defaultValue={pickedGenre}
@@ -83,7 +83,7 @@ export default function RandomMovie() {
             <Button
               disabled={isLoading}
               onClick={() => getGenreMovies(pickedGenre)}
-              className="text-gray-50 bg-yellow-600 py-3 px-7 my-4 hover:bg-yellow-500 hover:text-gray-800 cursor-pointer"
+              className="text-gray-50 bg-yellow-500 py-3 px-7 my-4 hover:bg-yellow-600 hover:text-gray-800 cursor-pointer"
             >
               Generate
             </Button>
@@ -98,7 +98,7 @@ export default function RandomMovie() {
               randomMovie && (
                 <>
                   <Link href={`/movie-details/${randomMovie.id}`}>
-                    <h4 className="text-center text-yellow-500">
+                    <h4 className="text-center text-yellow-400">
                       {randomMovie.title}
                     </h4>
                     <div className="w-[250px] h-[300px] md:w-[300px] md:h-[400px] bg-zinc-800 rounded-2xl relative overflow-hidden flex-shrink-0">

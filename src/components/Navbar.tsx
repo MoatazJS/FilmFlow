@@ -123,7 +123,7 @@ export default function Navbar() {
           </div>
           <Button
             variant="outline"
-            className="border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black transition"
+            className="border-yellow-400 cursor-pointer text-yellow-400 hover:bg-yellow-400 hover:text-black transition"
           >
             Search
           </Button>

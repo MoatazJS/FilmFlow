@@ -8,19 +8,19 @@ export default function MovieOfTheDay({ movie }: MovieOfTheDayProps) {
   return (
     <>
       <section className="min-h-fit mx-auto ">
-        <div className="text-center mt-20 md:mt-16 lg:mt-18 text-4xl md:text-5xl lg:text-6xl text-yellow-500 font-extrabold">
+        <div className="text-center mt-20 md:mt-16 lg:mt-18 text-4xl md:text-5xl lg:text-6xl text-yellow-400 font-extrabold">
           <p>Movie of the day</p>
         </div>
         <div className="container gap-4 flex flex-col-reverse justify-center md:flex-row lg:flex-row  md:justify-around lg:justify-around items-center mt-20">
           <div className="text-center md:text-start lg:text-start mr-0 md:mr-4 lg:mr-4">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl text-yellow-500 hover:text-yellow-600 font-extrabold ml-4 mt-1">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl text-yellow-400 hover:text-yellow-500 font-extrabold ml-4 mt-1">
               {movie.title}
             </h1>
-            <p className="max-w-md text-[12px] md:text-[13px] lg:text-sm text-gray-50 hover:text-yellow-600 font-bold ml-4 mt-1">
+            <p className="max-w-md text-[12px] md:text-[13px] lg:text-sm text-gray-50 font-bold ml-4 mt-1">
               {movie.overview}
             </p>
             <Link href={`/movie-details/${movie.id}`}>
-              <Button className="py-2 px-7 m-4 bg-yellow-600 hover:bg-yellow-500 text-gray-50 cursor-pointer hover:text-gray-800">
+              <Button className="py-2 px-7 m-4 bg-yellow-500 hover:bg-yellow-600 text-gray-50 cursor-pointer hover:text-gray-800">
                 See More
               </Button>
             </Link>
