@@ -13,7 +13,7 @@ export default function MovieSection({ title, movies }: MovieSectionProps) {
         </h2>
       </Link>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        {movies.map((movie) => (
+        {movies.slice(0, 5).map((movie) => (
           <MovieCard
             key={movie.id}
             title={movie.title}

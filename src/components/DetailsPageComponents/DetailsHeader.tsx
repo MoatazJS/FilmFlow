@@ -9,7 +9,7 @@ export default function DetailsHeader({
 }) {
   return (
     <>
-      <section className="relative w-full min-h-[800px]">
+      <section className="relative w-full min-h-[1300px] md:min-h-screen">
         {/* Cover / Backdrop */}
         <Image
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
@@ -23,7 +23,7 @@ export default function DetailsHeader({
         <div className="absolute inset-0 bg-gradient-to-b from-bg-black/60 to-black" />
 
         {/* Poster as profile picture */}
-        <div className="absolute inset-x-0 min-h-[800px] flex justify-start items-center lg:pl-32">
+        <div className="absolute inset-x-0 min-h-full flex justify-start items-center lg:pl-32">
           <div className="flex flex-col items-center">
             <Image
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
