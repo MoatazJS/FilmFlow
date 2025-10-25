@@ -90,11 +90,11 @@ export default function Navbar() {
           </NavigationMenu>
         </div>
         {isSearching ? (
-          <div ref={searchRef}>
+          <div ref={searchRef} className="flex items-center justify-end gap-4">
             <Search />
           </div>
         ) : (
-          <div className="flex items-center justify-end gap-4 mt-4">
+          <div className="flex items-center justify-end gap-4">
             <div className="md:hidden">
               <Sheet>
                 <SheetTrigger className="text-yellow-500 cursor-pointer ">
