@@ -95,7 +95,7 @@ export default function Navbar() {
           </div>
         ) : (
           <div className="flex items-center justify-end gap-4">
-            <div className="md:hidden">
+            <div className="md:hidden mt-2">
               <Sheet>
                 <SheetTrigger className="text-yellow-500 cursor-pointer ">
                   <Menu />
