@@ -149,3 +149,7 @@ export interface Genre {
 export interface MovieOfTheDayProps {
   movie: Movie;
 }
+export interface SearchResultsProps {
+  results: Movie[];
+  resultError: string;
+}

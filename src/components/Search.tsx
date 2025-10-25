@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { searchMovies } from "@/lib/services/ApiServices";
 import { Movie } from "@/lib/interfaces/interface";
+import SearchResults from "./SearchResults";
 
 export default function Search() {
   const [query, setQuery] = useState<string>("");
   const [results, setResults] = useState<Movie[]>([]);
   const [resultError, setResultError] = useState<string>("");
-
   async function getSearchResults(query: string) {
     if (!query.trim()) {
       setResults([]);
@@ -39,7 +39,7 @@ export default function Search() {
   }, [query]);
 
   return (
-    <div className="bg-transparent text-yellow-500 transition-all duration-300 ease-in-out ">
+    <div className="relative bg-transparent text-yellow-500 transition-all duration-300 ease-in-out ">
       <Input
         className="w-40 h-[36px] md:w-52 text-[12px] md:text-[14px]"
         onChange={handleSearchInput}
@@ -47,7 +47,9 @@ export default function Search() {
         type="text"
         value={query}
         placeholder="Search here.."
+        autoFocus
       />
+      <SearchResults results={results} resultError={resultError} />
     </div>
   );
 }
