@@ -10,11 +10,33 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Search from "./Search";
-
 export default function Navbar() {
+  const searchRef = useRef<HTMLDivElement>(null);
   const [isSearching, setIsSearching] = useState(false);
+
+  function handleSearchUnfocus(e: MouseEvent) {
+    if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+      setIsSearching(false);
+    }
+  }
+
+  useEffect(() => {
+    function handleSearchUnfocus(e: MouseEvent) {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setIsSearching(false);
+      }
+    }
+    if (isSearching) {
+      document.addEventListener("mousedown", handleSearchUnfocus);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleSearchUnfocus);
+    };
+  }, [isSearching]);
+
   return (
     <header className="w-full border-b border-zinc-800 bg-black/80 backdrop-blur-md fixed top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
@@ -125,7 +147,9 @@ export default function Navbar() {
             </Sheet>
           </div>
           {isSearching ? (
-            <Search />
+            <div ref={searchRef}>
+              <Search />
+            </div>
           ) : (
             <Button
               onClick={() => setIsSearching(true)}
