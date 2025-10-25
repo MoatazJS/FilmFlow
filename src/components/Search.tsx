@@ -39,7 +39,7 @@ export default function Search() {
   }, [query]);
 
   return (
-    <div className="bg-gray-50 text-black transition-all duration-300 ease-in-out">
+    <div className="bg-transparent text-yellow-500 transition-all duration-300 ease-in-out mt-4">
       <Input
         className="w-40 md:w-52 text-[12px] md:text-[14px]"
         onChange={handleSearchInput}

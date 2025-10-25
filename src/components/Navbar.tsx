@@ -89,68 +89,69 @@ export default function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <div className="flex items-center justify-end gap-4">
-          <div className="md:hidden">
-            <Sheet>
-              <SheetTrigger className="text-yellow-500 cursor-pointer ">
-                <Menu />
-              </SheetTrigger>
-              <SheetContent
-                side="right"
-                className="bg-gray-900 w-[200px] min-h-screen"
-              >
-                <NavigationMenu>
-                  <NavigationMenuList className="flex flex-col justify-start items-start min-h-screen mt-10">
-                    <NavigationMenuItem>
-                      <NavigationMenuLink asChild>
-                        <Link
-                          className="text-gray-300 hover:text-yellow-400"
-                          href="/"
-                        >
-                          Home
-                        </Link>
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <NavigationMenuLink asChild>
-                        <Link
-                          className="text-gray-300 hover:text-yellow-400"
-                          href="/popular"
-                        >
-                          Popular
-                        </Link>
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <NavigationMenuLink asChild>
-                        <Link
-                          className="text-gray-300 hover:text-yellow-400"
-                          href="/top-rated"
-                        >
-                          Top Rated
-                        </Link>
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <NavigationMenuLink asChild>
-                        <Link
-                          className="text-gray-300 hover:text-yellow-400"
-                          href="/upcoming"
-                        >
-                          Upcoming
-                        </Link>
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  </NavigationMenuList>
-                </NavigationMenu>
-              </SheetContent>
-            </Sheet>
+        {isSearching ? (
+          <div ref={searchRef}>
+            <Search />
           </div>
-          {isSearching ? (
-            <div ref={searchRef}>
-              <Search />
+        ) : (
+          <div className="flex items-center justify-end gap-4 mt-4">
+            <div className="md:hidden">
+              <Sheet>
+                <SheetTrigger className="text-yellow-500 cursor-pointer ">
+                  <Menu />
+                </SheetTrigger>
+                <SheetContent
+                  side="right"
+                  className="bg-gray-900 w-[200px] min-h-screen"
+                >
+                  <NavigationMenu>
+                    <NavigationMenuList className="flex flex-col justify-start items-start min-h-screen mt-10">
+                      <NavigationMenuItem>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            className="text-gray-300 hover:text-yellow-400"
+                            href="/"
+                          >
+                            Home
+                          </Link>
+                        </NavigationMenuLink>
+                      </NavigationMenuItem>
+                      <NavigationMenuItem>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            className="text-gray-300 hover:text-yellow-400"
+                            href="/popular"
+                          >
+                            Popular
+                          </Link>
+                        </NavigationMenuLink>
+                      </NavigationMenuItem>
+                      <NavigationMenuItem>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            className="text-gray-300 hover:text-yellow-400"
+                            href="/top-rated"
+                          >
+                            Top Rated
+                          </Link>
+                        </NavigationMenuLink>
+                      </NavigationMenuItem>
+                      <NavigationMenuItem>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            className="text-gray-300 hover:text-yellow-400"
+                            href="/upcoming"
+                          >
+                            Upcoming
+                          </Link>
+                        </NavigationMenuLink>
+                      </NavigationMenuItem>
+                    </NavigationMenuList>
+                  </NavigationMenu>
+                </SheetContent>
+              </Sheet>
             </div>
-          ) : (
+
             <Button
               onClick={() => setIsSearching(true)}
               variant="outline"
@@ -158,8 +159,8 @@ export default function Navbar() {
             >
               Search
             </Button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </header>
   );
