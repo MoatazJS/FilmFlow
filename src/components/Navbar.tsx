@@ -10,8 +10,11 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import { useState } from "react";
+import Search from "./Search";
 
 export default function Navbar() {
+  const [isSearching, setIsSearching] = useState(false);
   return (
     <header className="w-full border-b border-zinc-800 bg-black/80 backdrop-blur-md fixed top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
@@ -121,12 +124,17 @@ export default function Navbar() {
               </SheetContent>
             </Sheet>
           </div>
-          <Button
-            variant="outline"
-            className="border-yellow-400 cursor-pointer text-yellow-400 hover:bg-yellow-400 hover:text-black transition"
-          >
-            Search
-          </Button>
+          {isSearching ? (
+            <Search />
+          ) : (
+            <Button
+              onClick={() => setIsSearching(true)}
+              variant="outline"
+              className="border-yellow-400 cursor-pointer text-yellow-400 hover:bg-yellow-400 hover:text-black transition"
+            >
+              Search
+            </Button>
+          )}
         </div>
       </div>
     </header>
